@@ -1,3 +1,11 @@
+//memoization:
+//1- visualize the problem as a tree
+//2- implement thr tree using recursion
+//3- test it
+//4- add a memo object
+//5- add a base case to return memo values
+//6- store return values into the memo
+
 console.log("hello");
 
 const foo = (n) => {
