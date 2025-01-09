@@ -23,9 +23,10 @@ const fibonacci1 = (n) => {
         return fibonacci1(n-1) + fibonacci1(n-2);
     }
 };
+//O(2^n) time
+//O(n) space
 
 console.log(fibonacci1(7));
-console.log(fibonacci1(50));
 
 const fibonacci2 = (n,memo = {}) => {
     if(n in memo){
@@ -39,15 +40,8 @@ const fibonacci2 = (n,memo = {}) => {
         return memo[n];
     }
 };
-//memoization
+//O(n) time
+//O(n) space
 
 console.log(fibonacci2(7));
 console.log(fibonacci2(50));
-
-//fibonacci1:
-//O(2^n) time
-//O(n) space
-
-//fibonacci2:
-//O(n) time
-//O(n) space
