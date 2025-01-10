@@ -6,6 +6,11 @@
 //5- add a base case to return memo values
 //6- store return values into the memo
 
+//dynamic programming:
+//canSum    -> desicion problem
+//howSum    -> combinatoric problem
+//bestSum   -> optimization problem
+
 console.log("hello");
 
 const foo = (n) => {

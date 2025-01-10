@@ -10,6 +10,9 @@ console.log(newArray2);
 newArray3 = ["d",...array];
 console.log(newArray3);
 
+//how will you do it
+//combinatoric problem
+
 //write a function howSum(targetSum,numbers) that takes in a targetSum and an array of numbers as arguments
 //the function should return an array containing any combination of elements that add up to exactly the targetSum
 //if there is no combination that adds up to the targetSum then return null
@@ -26,7 +29,7 @@ const howSum1 = (targetSum,numbers) => {
         for(let number of numbers){
             const result = howSum1(targetSum-number,numbers);
 
-            if(result != null){
+            if(result !== null){
                 return [...result,number];
             }
         }
@@ -60,7 +63,7 @@ const howSum2 = (targetSum,numbers,memo = {}) => {
         for(let number of numbers){
             const result = howSum2(targetSum-number,numbers,memo);
 
-            if(result != null){
+            if(result !== null){
                 memo[targetSum] = [...result,number];
                 return memo[targetSum];
             }
@@ -73,7 +76,7 @@ const howSum2 = (targetSum,numbers,memo = {}) => {
 //m = target sum
 //n = array length
 //O(n*m*m) time
-//O(m*m) space
+//O(m) space
 
 console.log(howSum2(7, [2, 3])); 
 console.log(howSum2(7, [5, 3, 4, 7])); 
