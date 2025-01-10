@@ -85,3 +85,31 @@ console.log(canConstruct2("skateboard", ["bo", "rd", "ate", "ska", "sk", "boar"]
 console.log(canConstruct2("", ["cat", "dog", "mouse"])); 
 console.log(canConstruct2("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]));
 console.log(canConstruct2("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee"]));
+
+const canConstruct3 = (target,wordBank) => {
+    const array = Array(target.length+1).fill(false);
+    array[0] = true;
+
+    for(let i=0; i<array.length; i++){
+        if(array[i] === true){
+            for(let word of wordBank){
+                const index = i + word.length;
+                if(target.slice(i,index) === word){
+                    array[index] = true;
+                }
+            }
+        }
+    }
+
+    return array[target.length];
+};
+//m = target.length
+//n = wordBank.length
+//O(n*m*m) time
+//O(m) space
+
+console.log(canConstruct3("abcdef", ["ab", "abc", "cd", "def", "abcd"]));
+console.log(canConstruct3("skateboard", ["bo", "rd", "ate", "ska", "sk", "boar"])); 
+console.log(canConstruct3("", ["cat", "dog", "mouse"])); 
+console.log(canConstruct3("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]));
+console.log(canConstruct3("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee"]));

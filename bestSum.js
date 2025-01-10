@@ -81,3 +81,36 @@ console.log(bestSum2(7,[5,3,4,7]));
 console.log(bestSum2(8,[2,3,5]));
 console.log(bestSum2(8,[1,4,5]));
 console.log(bestSum2(100,[1,2,5,25]));
+
+const bestSum3 = (targetSum,numbers) => {
+    const array = Array(targetSum+1).fill(null);
+    array[0] = [];
+
+    for(let i=0; i<array.length; i++){
+        if(array[i] !== null){
+            for(let number of numbers){
+                const index = i+number;
+                if(index < array.length){
+                    const combination = [...array[i],number];
+                    if(array[index] === null){
+                        array[index] = combination;
+                    }
+                    else if (combination.length < array[index].length) {
+                        array[index] = combination;
+                    }
+                }
+            }
+        }
+    }
+
+    return array[targetSum];
+};
+//m = target sum
+//n = array length
+//O(n*m*m) time
+//O(m*m) space
+
+console.log(bestSum3(7,[5,3,4,7]));
+console.log(bestSum3(8,[2,3,5]));
+console.log(bestSum3(8,[1,4,5]));
+console.log(bestSum3(100,[1,2,5,25]));

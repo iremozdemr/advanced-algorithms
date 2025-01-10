@@ -50,3 +50,29 @@ console.log(gridTraveler2(2,3));
 console.log(gridTraveler2(3,2));
 console.log(gridTraveler2(3,3));
 console.log(gridTraveler2(18,18));
+
+const gridTraveler3 = (m,n) => {
+    const array = Array(m+1).fill().map(() => Array(n+1).fill(0));
+    array[1][1] = 1;
+
+    for(let i=0; i<m+1; i++){
+        for(let j=0; j<n+1; j++){
+            if(i+1 <= m){
+                array[i+1][j] += array[i][j];
+            }
+            if(j+1 <= n){
+                array[i][j+1] += array[i][j];
+            }
+        }
+    }
+
+    return array[m][n];
+};
+//O(n*m) time
+//O(n*m) space
+
+console.log(gridTraveler3(1,1));
+console.log(gridTraveler3(2,3));
+console.log(gridTraveler3(3,2));
+console.log(gridTraveler3(3,3));
+console.log(gridTraveler3(18,18));

@@ -86,34 +86,64 @@ console.log(howSum2(0, [1, 2, 3]));
 console.log(howSum2(8, [2])); 
 console.log(howSum2(300, [7,14])); 
 
-const compare = (testCases) => {
-    const measureTime = (func, targetSum, numbers) => {
-        const start = performance.now(); 
-        func(targetSum, numbers); 
-        const end = performance.now();
-        return end - start; 
-    };
+const howSum3 = (targetSum,numbers) => {
+    const array = Array(targetSum+1).fill(null);
+    array[0] = [];
 
-    testCases.forEach(([targetSum, numbers], index) => {
-        console.log(`test case ${index + 1}: targetSum = ${targetSum}, numbers = ${numbers}`);
-        
-        const time1 = measureTime(howSum1, targetSum, numbers);
-        console.log(`howSum1 took ${time1.toFixed(6)} ms`);
+    for(let i=0; i<array.length; i++){
+        if(array[i] !== null){
+            for(let number of numbers){
+                const index = i+number;
+                if(index < array.length){
+                    array[index] = [...array[i],number];
+                }
+            }
+        }
+    }
 
-        const time2 = measureTime((targetSum, numbers) => howSum2(targetSum, numbers, {}), targetSum, numbers);
-        console.log(`howSum2 took ${time2.toFixed(6)} ms`);
-        
-        console.log(
-            `faster function: ${
-                time1 < time2 ? "howSum1" : "howSum2"
-            }`
-        );
-        console.log('------------------------------------');
-    });
+    return array[targetSum];
 };
+//m = target sum
+//n = array length
+//O(n*m*m) time
+//O(m*m) space
 
-const testCases = [
-    [300, [7,14]],
-];
+console.log(howSum3(7, [2, 3])); 
+console.log(howSum3(7, [5, 3, 4, 7])); 
+console.log(howSum3(7, [2, 4])); 
+console.log(howSum3(8, [2, 3, 5])); 
+console.log(howSum3(0, [1, 2, 3])); 
+console.log(howSum3(8, [2])); 
+console.log(howSum3(300, [7,14])); 
 
-compare(testCases);
+// const compare = (testCases) => {
+//     const measureTime = (func, targetSum, numbers) => {
+//         const start = performance.now(); 
+//         func(targetSum, numbers); 
+//         const end = performance.now();
+//         return end - start; 
+//     };
+
+//     testCases.forEach(([targetSum, numbers], index) => {
+//         console.log(`test case ${index + 1}: targetSum = ${targetSum}, numbers = ${numbers}`);
+        
+//         const time1 = measureTime(howSum1, targetSum, numbers);
+//         console.log(`howSum1 took ${time1.toFixed(6)} ms`);
+
+//         const time2 = measureTime((targetSum, numbers) => howSum2(targetSum, numbers, {}), targetSum, numbers);
+//         console.log(`howSum2 took ${time2.toFixed(6)} ms`);
+        
+//         console.log(
+//             `faster function: ${
+//                 time1 < time2 ? "howSum1" : "howSum2"
+//             }`
+//         );
+//         console.log('------------------------------------');
+//     });
+// };
+
+// const testCases = [
+//     [300, [7,14]],
+// ];
+
+// compare(testCases);

@@ -81,3 +81,25 @@ console.log(allConstruct2("skateboard", ["bo", "rd", "ate", "ska", "sk", "boar"]
 console.log(allConstruct2("", ["cat", "dog", "mouse"])); 
 console.log(allConstruct2("aaaa", ["a", "aa", "aaa"]));
 console.log(allConstruct2("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee"])); 
+
+const allConstruct3 = (target, wordBank) => {
+    const table = Array(target.length + 1).fill().map(() => []); 
+    table[0] = [[]];
+
+    for (let i = 0; i <= target.length; i++) {
+        for (let word of wordBank) {
+            if (target.slice(i, i + word.length) === word) {
+                const newCombinations = table[i].map((combination) => [...combination, word]);
+                table[i+word.length].push(...newCombinations);
+            }
+        }
+    }
+
+    return table[target.length];
+};
+
+console.log(allConstruct3("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"])); 
+console.log(allConstruct3("purple", ["purp", "p", "ur", "le", "purpl"])); 
+console.log(allConstruct3("skateboard", ["bo", "rd", "ate", "ska", "sk", "boar"])); 
+console.log(allConstruct3("", ["cat", "dog", "mouse"])); 
+console.log(allConstruct3("aaaa", ["a", "aa", "aaa"]));

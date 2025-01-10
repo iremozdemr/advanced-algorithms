@@ -63,3 +63,38 @@ console.log(canSum2(7,[2,3]));
 console.log(canSum2(7,[2,4]));
 console.log(canSum2(8,[2,3,5]));
 console.log(canSum2(3000,[7,14]));
+
+const canSum3 = (targetSum,numbers) => {
+    const array = Array(targetSum+1).fill(false);
+    array[0] = true;
+    array[targetSum] = true;
+
+    for(let number of numbers){
+        array[number] = true;
+    }
+
+    for(let i=0; i<array.length; i++){
+        if(array[i] === true){
+            for(let number of numbers){
+                let index = i+number;
+                if(index < array.length){
+                    array[index] = true;
+                }
+                if(index+i === targetSum){
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+};
+//m = target sum
+//n = array length
+//O(n*m) time
+//O(m) space
+
+console.log(canSum3(7,[2,3]));
+console.log(canSum3(7,[2,4]));
+console.log(canSum3(8,[2,3,5]));
+console.log(canSum3(3000,[7,14]));

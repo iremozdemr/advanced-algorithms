@@ -15,6 +15,12 @@ console.log(3 in object);
 console.log(4 in object);
 //true
 
+const array1 = Array(8);
+console.log(array1);
+
+const array2 = Array(8).fill(0);
+console.log(array2);
+
 const fibonacci1 = (n) => {
     if(n <= 2){
         return 1;
@@ -45,3 +51,21 @@ const fibonacci2 = (n,memo = {}) => {
 
 console.log(fibonacci2(7));
 console.log(fibonacci2(50));
+
+const fibonacci3 = (n) => {
+    const array = Array(n+1).fill(0);
+    array[0] = 0;
+    array[1] = 1;
+
+    for(let i=0; i<n+1; i++){
+        array[i+1] += array[i];
+        array[i+2] += array[i];
+    }
+
+    return array[n];
+};
+//O(n) time
+//O(n) space
+
+console.log(fibonacci3(7));
+console.log(fibonacci3(50));
