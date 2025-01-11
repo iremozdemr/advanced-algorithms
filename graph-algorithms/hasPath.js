@@ -25,7 +25,7 @@
 //3- termination:
 //if all neighbors have been visited and no path is found return false
 
-const hasPath = (graph,sourceNode,destinationNode) => {
+const hasPathDepthFirst = (graph,sourceNode,destinationNode) => {
     const stack = [sourceNode];
 
     while(stack.length > 0){
@@ -41,6 +41,22 @@ const hasPath = (graph,sourceNode,destinationNode) => {
     return false;
 };
 
+const hasPathBreadthFirst = (graph,sourceNode,destinationNode) => {
+    const queue = [sourceNode];
+
+    while(queue.length > 0){
+        const currentNode = queue.shift();
+        if(currentNode == destinationNode){
+            return true;
+        }
+        for(let neighbor of graph[currentNode]){
+            queue.push(neighbor);
+        }
+    }
+
+    return false;
+};
+
 const hasPathRecursion = (graph,sourceNode,destinationNode) => {
     if(sourceNode === destinationNode){
         return true;
@@ -48,7 +64,7 @@ const hasPathRecursion = (graph,sourceNode,destinationNode) => {
     else{
         const currentNode = sourceNode;
         for (let neighbor of graph[currentNode]) {
-            if(hasPath(graph,neighbor,destinationNode)){
+            if(hasPathRecursion(graph,neighbor,destinationNode)){
                 return true;
             }
         }
@@ -75,9 +91,13 @@ const graph = {
     f: []
 };
 
-console.log(hasPath(graph, 'a', 'f')); 
-console.log(hasPath(graph, 'a', 'd')); 
-console.log(hasPath(graph, 'c', 'a')); 
+console.log(hasPathDepthFirst(graph, 'a', 'f')); 
+console.log(hasPathDepthFirst(graph, 'a', 'd')); 
+console.log(hasPathDepthFirst(graph, 'c', 'a')); 
+
+console.log(hasPathBreadthFirst(graph, 'a', 'f')); 
+console.log(hasPathBreadthFirst(graph, 'a', 'd')); 
+console.log(hasPathBreadthFirst(graph, 'c', 'a')); 
 
 console.log(hasPathRecursion(graph, 'a', 'f')); 
 console.log(hasPathRecursion(graph, 'a', 'd')); 
