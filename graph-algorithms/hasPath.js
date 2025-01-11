@@ -30,7 +30,7 @@ const hasPathDepthFirst = (graph,sourceNode,destinationNode) => {
 
     while(stack.length > 0){
         const currentNode = stack.pop();
-        if(currentNode == destinationNode){
+        if(currentNode === destinationNode){
             return true;
         }
         for(let neighbor of graph[currentNode]){
@@ -46,7 +46,7 @@ const hasPathBreadthFirst = (graph,sourceNode,destinationNode) => {
 
     while(queue.length > 0){
         const currentNode = queue.shift();
-        if(currentNode == destinationNode){
+        if(currentNode === destinationNode){
             return true;
         }
         for(let neighbor of graph[currentNode]){
