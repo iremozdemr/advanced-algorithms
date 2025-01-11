@@ -33,8 +33,10 @@ const hasPathDepthFirst = (graph,sourceNode,destinationNode) => {
         if(currentNode === destinationNode){
             return true;
         }
-        for(let neighbor of graph[currentNode]){
-            stack.push(neighbor);
+        else{
+            for(let neighbor of graph[currentNode]){
+                stack.push(neighbor);
+            }
         }
     }
 
@@ -49,8 +51,10 @@ const hasPathBreadthFirst = (graph,sourceNode,destinationNode) => {
         if(currentNode === destinationNode){
             return true;
         }
-        for(let neighbor of graph[currentNode]){
-            queue.push(neighbor);
+        else{
+            for(let neighbor of graph[currentNode]){
+                queue.push(neighbor);
+            }
         }
     }
 
@@ -62,8 +66,7 @@ const hasPathRecursion = (graph,sourceNode,destinationNode) => {
         return true;
     }
     else{
-        const currentNode = sourceNode;
-        for (let neighbor of graph[currentNode]) {
+        for (let neighbor of graph[sourceNode]) {
             if(hasPathRecursion(graph,neighbor,destinationNode)){
                 return true;
             }
@@ -83,22 +86,22 @@ const hasPathRecursion = (graph,sourceNode,destinationNode) => {
 //space = O(n)
 
 const graph = {
-    a: ['b', 'c'],
-    b: ['d'],
-    c: ['e'],
-    d: [],
-    e: ['f'],
-    f: []
+    a : ['b', 'c'],
+    b : ['d'],
+    c : ['e'],
+    d : [],
+    e : ['f'],
+    f : []
 };
 
-console.log(hasPathDepthFirst(graph, 'a', 'f')); 
-console.log(hasPathDepthFirst(graph, 'a', 'd')); 
-console.log(hasPathDepthFirst(graph, 'c', 'a')); 
+console.log(hasPathDepthFirst(graph,'a','f')); 
+console.log(hasPathDepthFirst(graph,'a','d')); 
+console.log(hasPathDepthFirst(graph,'c','a')); 
 
-console.log(hasPathBreadthFirst(graph, 'a', 'f')); 
-console.log(hasPathBreadthFirst(graph, 'a', 'd')); 
-console.log(hasPathBreadthFirst(graph, 'c', 'a')); 
+console.log(hasPathBreadthFirst(graph,'a','f')); 
+console.log(hasPathBreadthFirst(graph,'a','d')); 
+console.log(hasPathBreadthFirst(graph,'c','a')); 
 
-console.log(hasPathRecursion(graph, 'a', 'f')); 
-console.log(hasPathRecursion(graph, 'a', 'd')); 
-console.log(hasPathRecursion(graph, 'c', 'a')); 
+console.log(hasPathRecursion(graph,'a','f')); 
+console.log(hasPathRecursion(graph,'a','d')); 
+console.log(hasPathRecursion(graph,'c','a'));  
