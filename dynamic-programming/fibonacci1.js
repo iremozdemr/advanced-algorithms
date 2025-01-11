@@ -6,7 +6,7 @@
 //5- add a base case to return memo values
 //6- store return values into the memo
 
-//tabulation:
+//tabulation = bottom up approach:
 //1- visualize the problem as a table
 //2- size the table based on the inputs
 //3- initialize the table with default values
