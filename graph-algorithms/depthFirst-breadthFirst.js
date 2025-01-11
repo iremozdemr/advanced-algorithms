@@ -1,8 +1,8 @@
 //depth first:
-//stack
+//-stack
 
 //breadth first
-//queue
+//-queue
 
 //vertex = node
 
@@ -61,9 +61,9 @@ const depthFirstPrint = (graph,sourceNode) => {
     const stack = [sourceNode];
 
     while(stack.length > 0){
-        const current = stack.pop();
-        console.log(current);
-        for(let neighbor of graph[current]){
+        const currentNode = stack.pop();
+        console.log(currentNode);
+        for(let neighbor of graph[currentNode]){
             stack.push(neighbor);
         }
     }
@@ -81,9 +81,9 @@ const breadthFirstPrint = (graph,sourceNode) => {
     const queue = [sourceNode];
 
     while(queue.length > 0){
-        const current = queue.shift();
-        console.log(current);
-        for(let neighbor of graph[current]){
+        const currentNode = queue.shift();
+        console.log(currentNode);
+        for(let neighbor of graph[currentNode]){
             queue.push(neighbor);
         }
     }
@@ -94,10 +94,10 @@ const breadthFirstRecursionPrintHelper = (graph,queue) => {
         return;
     }
     else{
-        const current = queue.shift();
-        console.log(current);
+        const currentNode = queue.shift();
+        console.log(currentNode);
 
-        for (let neighbor of graph[current]) {
+        for (let neighbor of graph[currentNode]) {
             queue.push(neighbor); 
         }
 
